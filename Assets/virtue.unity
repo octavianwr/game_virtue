@@ -142,12 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4200c333be1d5324bad11445a09cfec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   currentHealth: 20
+  power: 5
+  toughness: 5
   maxHealth: 20
-  pickupItem: {fileID: 0}
 --- !u!23 &354036300
 MeshRenderer:
   m_ObjectHideFlags: 0
