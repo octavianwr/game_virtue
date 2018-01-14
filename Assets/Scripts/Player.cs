@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     public CharacterStats characterStats;
-    //public int currentHealth;
-    //public int maxHealth;
+    public int currentHealth;
+    public int maxHealth;
     //public PlayerLevel PlayerLevel { get; set; }
 
     void Start()
@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
         characterStats = new CharacterStats(10, 10, 10);
     }
 
-	/*
+
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
@@ -29,5 +29,5 @@ public class Player : MonoBehaviour {
         this.currentHealth = this.maxHealth;
         UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
-    */
+    
 }
