@@ -7,7 +7,7 @@ using System.Linq;
 
 public class BaseStat
 {
-    //public enum BaseStatType { Power, Toughness, AttackSpeed }
+    public enum BaseStatType { Power, Toughness, AttackSpeed }
 
     public List<StatBonus> BaseAdditives { get; set; }
     //[JsonConverter(typeof(StringEnumConverter))]
@@ -25,14 +25,14 @@ public class BaseStat
         this.StatDescription = statDescription;
     }
 
-    //[Newtonsoft.Json.JsonConstructor]
-    /*public BaseStat(BaseStatType statType, int baseValue, string statName)
+    [Newtonsoft.Json.JsonConstructor]
+    public BaseStat(BaseStatType statType, int baseValue, string statName)
     {
         this.BaseAdditives = new List<StatBonus>();
-        this.StatType = statType;
+        //this.StatType = statType;
         this.BaseValue = baseValue;
         this.StatName = statName;
-    }*/
+    }
 
     public void AddStatBonus(StatBonus statBonus)
     {

@@ -5,19 +5,19 @@ using UnityEngine.AI;
 public class Interactable : MonoBehaviour {
     
     public NavMeshAgent playerAgent;
-    //private bool hasInteracted;
-    //bool isEnemy;
+    private bool hasInteracted;
+    bool isEnemy;
 
     public virtual void MoveToInteraction(NavMeshAgent playerAgent)
     {
-        //isEnemy = gameObject.tag == "Enemy";
-        //hasInteracted = false;
+        isEnemy = gameObject.tag == "Enemy";
+        hasInteracted = false;
         this.playerAgent = playerAgent;
         playerAgent.stoppingDistance = 2f;
         playerAgent.destination = this.transform.position;
         Interact();
     }
-    /*
+    
     void Update()
     {
         if (!hasInteracted && playerAgent != null && !playerAgent.pathPending)
@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour {
         playerAgent.updateRotation = true;
     }
 
-    */
+    
 
     public virtual void Interact()
     {
