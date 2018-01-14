@@ -4,17 +4,16 @@ using System.Collections;
 public class PlayerWeaponController : MonoBehaviour {
     public GameObject playerHand;
     public GameObject EquippedWeapon { get; set; }
-
+	private Animator animator;
     //Transform spawnProjectile;
-    //Item currentlyEquippedItem;
+    Item currentlyEquippedItem;
     IWeapon equippedWeapon;
     CharacterStats characterStats;
 
     void Start()
     {
         //spawnProjectile = transform.Find("ProjectileSpawn");
-        //characterStats = GetComponent<Player>().characterStats;
-        characterStats = GetComponent<CharacterStats>();
+        characterStats = GetComponent<Player>().characterStats;
     }
 
     public void EquipWeapon(Item itemToEquip)
@@ -22,6 +21,7 @@ public class PlayerWeaponController : MonoBehaviour {
         if (EquippedWeapon != null)
         {
             //UnequipWeapon();
+			InventoryController.Instance.GiveItem(currentlyEquippedItem.ObjectSlug);
             characterStats.RemoveStatBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
@@ -35,10 +35,10 @@ public class PlayerWeaponController : MonoBehaviour {
         characterStats.AddStatBonus(itemToEquip.Stats);
         Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
         //if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
-        //  EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
+          //EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
 
 
-        //currentlyEquippedItem = itemToEquip;
+        currentlyEquippedItem = itemToEquip;
 
         //UIEventHandler.ItemEquipped(itemToEquip);
         //UIEventHandler.StatsChanged();
@@ -63,16 +63,16 @@ public class PlayerWeaponController : MonoBehaviour {
     
     public void PerformWeaponAttack()
     {
-        equippedWeapon.PerformAttack();
+		animator.SetTrigger("Base_Attack");
     }
 
     
     public void PerformWeaponSpecialAttack()
     {
-        equippedWeapon.PerformSpecialAttack();
+		animator.SetTrigger("Special_Attack");
     }
     
-    /*
+    
     private int CalculateDamage()
     {
         int damageToDeal = (characterStats.GetStat(BaseStat.BaseStatType.Power).GetCalculatedStatValue() * 2)
@@ -91,5 +91,5 @@ public class PlayerWeaponController : MonoBehaviour {
         }
         return 0;
     }
-    */
+    
 }

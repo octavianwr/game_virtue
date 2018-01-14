@@ -14,12 +14,12 @@ public class InventoryUIDetails : MonoBehaviour {
         itemDescriptionText = transform.Find("Item_Description").GetComponent<Text>();
         itemInteractButton = transform.Find("Button").GetComponent<Button>();
         itemInteractButtonText = itemInteractButton.transform.Find("Text").GetComponent<Text>();
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void SetItem(Item item, Button selectedButton)
     {
-        /*gameObject.SetActive(true);
+        gameObject.SetActive(true);
         statText.text = "";
         if (item.Stats != null)
         {
@@ -27,7 +27,7 @@ public class InventoryUIDetails : MonoBehaviour {
             {
                 statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
             }
-        }*/
+        }
         itemInteractButton.onClick.RemoveAllListeners();
 		this.item = item;
         selectedItemButton = selectedButton;
@@ -35,7 +35,7 @@ public class InventoryUIDetails : MonoBehaviour {
         itemDescriptionText.text = item.Description;
         itemInteractButtonText.text = item.ActionName;
         itemInteractButton.onClick.AddListener(OnItemInteract);
-		gameObject.SetActive(false);
+
     }
 
     public void OnItemInteract()

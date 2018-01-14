@@ -6,17 +6,17 @@ public class Sword : MonoBehaviour, IWeapon
 {
     private Animator animator;
     public List<BaseStat> Stats { get; set; }
-    //public CharacterStats CharacterStats { get; set; }
-    //public int CurrentDamage { get; set; }
+    public CharacterStats CharacterStats { get; set; }
+    public int CurrentDamage { get; set; }
 
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void PerformAttack()
+	public void PerformAttack(int damage)
     {
-        //CurrentDamage = damage;
+        CurrentDamage = damage;
         animator.SetTrigger("Base_Attack");
     }
 
@@ -31,7 +31,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         if (col.tag == "Enemy")
         {
-            col.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
+			col.GetComponent<IEnemy>().TakeDamage(CharacterStats.GetStat(BaseStat.BaseStatType.Power).GetCalculatedStatValue());
         }
     }
     

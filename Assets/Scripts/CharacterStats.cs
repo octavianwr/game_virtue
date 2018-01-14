@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CharacterStats: MonoBehaviour {
+public class CharacterStats {
     public List<BaseStat> stats = new List<BaseStat>();
-    /*
+    
     public CharacterStats(int power, int toughness, int attackSpeed)
     {
         stats = new List<BaseStat>() {
@@ -17,20 +17,14 @@ public class CharacterStats: MonoBehaviour {
     {
         return this.stats.Find(x => x.StatType == stat);
     }
-    */
-    private void Start()
-    {
-        stats.Add(new BaseStat(4, "Power", "Your power level."));
-        stats.Add(new BaseStat(2, "Vitality", "Your vitality level."));
-    }
+    
 
 
     public void AddStatBonus(List<BaseStat> statBonuses)
     {
         foreach(BaseStat statBonus in statBonuses)
         {
-            //GetStat(statBonus.StatType).AddStatBonus(new StatBonus(statBonus.BaseValue));
-            stats.Find(x=> x.StatName == statBonus.StatName).AddStatBonus(new StatBonus(statBonus.BaseValue));
+            GetStat(statBonus.StatType).AddStatBonus(new StatBonus(statBonus.BaseValue));
         }
     }
 
@@ -40,8 +34,7 @@ public class CharacterStats: MonoBehaviour {
     {
         foreach (BaseStat statBonus in statBonuses)
         {
-            //GetStat(statBonus.StatType).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
-            stats.Find(x => x.StatName == statBonus.StatName).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
+            GetStat(statBonus.StatType).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
         }
     }
     

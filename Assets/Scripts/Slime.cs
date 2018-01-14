@@ -30,7 +30,7 @@ public class Slime : MonoBehaviour, IEnemy
         //ID = 0;
         //Experience = 250;
         //navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        //characterStats = new CharacterStats(6, 10, 2);
+        characterStats = new CharacterStats(6, 10, 2);
         currentHealth = maxHealth;
     }
 
